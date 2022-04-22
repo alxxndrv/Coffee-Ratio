@@ -20,7 +20,9 @@ class CoffeeInputView {
     }
     
     func enterCoffeeAmount(amount: Int) {
+        coffeeAmountInput.tap()
         coffeeAmountInput.typeText(String(amount))
+        app.keyboards.buttons["return"].tap()
     }
 
 }
