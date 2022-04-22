@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040D9DF128128F6F00ABA983 /* RatioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D9DF028128F6F00ABA983 /* RatioInputView.swift */; };
 		0437C5152811515500E12832 /* CoffeeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437C5142811515500E12832 /* CoffeeInputView.swift */; };
 		526BD84A240771A100A24AD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BD849240771A100A24AD2 /* AppDelegate.swift */; };
 		526BD84C240771A100A24AD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BD84B240771A100A24AD2 /* SceneDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040D9DF028128F6F00ABA983 /* RatioInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioInputView.swift; sourceTree = "<group>"; };
 		0437C5142811515500E12832 /* CoffeeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeInputView.swift; sourceTree = "<group>"; };
 		526BD846240771A100A24AD2 /* Ratios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526BD849240771A100A24AD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				0437C5142811515500E12832 /* CoffeeInputView.swift */,
+				040D9DF028128F6F00ABA983 /* RatioInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526BD86F240771A300A24AD2 /* RatiosUITests.swift in Sources */,
+				040D9DF128128F6F00ABA983 /* RatioInputView.swift in Sources */,
 				0437C5152811515500E12832 /* CoffeeInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
