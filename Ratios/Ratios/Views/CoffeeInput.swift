@@ -28,7 +28,7 @@ struct CoffeeInput: View {
                         .stroke(Color("Primary"), lineWidth: 3)
                 )
                 .multilineTextAlignment(.center)
-                .id("coffeeAmountTextField")
+                .accessibilityIdentifier("coffeeAmountTextField")
 
             Text("grams")
                 .fixedSize()
