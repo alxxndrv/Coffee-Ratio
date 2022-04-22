@@ -1,15 +1,7 @@
-# Ratios
-[![Build Status](https://travis-ci.org/johnmahlon/Coffee-Ratio.svg?branch=master)](https://travis-ci.org/johnmahlon/Coffee-Ratio)
+# Ratio [tests] — тестовое задание
 
-This is an open source app made to help home brewers brew their coffee by calculating the grams of water needed,
-and run a timer all in the same screen. 
+Тестовое задание на летнюю стажировку в VK Group, Почта iOS.
 
-This is perfect for:
-- Chemex
-- French Press
-- V60
-- Drip Pot
-- other slow bar methods 
+## Примечание
 
-![app screenshot](screenshot.png)
-
+- `accessibityIdentifier` (как и множество acessibility-штукенций) в **SwiftUI** поддерживается только c iOS 14, поэтому для того, чтобы сделать тесты более «гибкими», Build Target пришлось повысить.
