@@ -115,3 +115,5 @@ iOSInjectionProject/
 =======
 *.xcworkspace
 >>>>>>> c170eb8e8b512ef448f60ddc93f021f54826410c
+/Ratios/Ratios.xcodeproj/xcshareddata
+/Ratios/.DS_Store
