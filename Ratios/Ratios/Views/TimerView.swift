@@ -35,6 +35,7 @@ struct TimerView: View {
                     let minutes = String(format :"%02d", self.secondsPassed % 60)
                     self.timerText = "\(hours):\(minutes)"
                 }
+                .accessibilityIdentifier("timerView")
 
             Spacer()
                 .frame(height: 20)
@@ -48,6 +49,7 @@ struct TimerView: View {
                     .cornerRadius(CGFloat(10))
                     .foregroundColor(Color("AltText"))
             }
+            .accessibilityIdentifier("timerActionButton")
 
             Spacer()
                 .frame(height: 12)
@@ -64,6 +66,7 @@ struct TimerView: View {
                 .fixedSize()
                 .foregroundColor(Color("Primary"))
             }
+            .accessibilityIdentifier("resetButton")
         }
     }
 
