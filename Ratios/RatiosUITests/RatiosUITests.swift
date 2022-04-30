@@ -87,7 +87,8 @@ class RatiosUITests: XCTestCase {
         let ratioInput = RatioInputView(app: app)
         
         // Checking whether the inputs are visible or not
-        XCTAssertTrue(coffeeInput.checkInputVisibility())
-        
+        XCTAssertTrue(coffeeInput.coffeeAmountInput.checkInputVisibility())
+        XCTAssertTrue(ratioInput.ratioInputView.checkInputVisibility())
+
     }
 }

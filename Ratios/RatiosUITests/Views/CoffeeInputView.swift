@@ -24,11 +24,15 @@ class CoffeeInputView {
         coffeeAmountInput.typeText(String(amount))
         app.keyboards.buttons["return"].tap()
     }
-    
-    func checkInputVisibility() -> Bool {
-        coffeeAmountInput.tap()
-        coffeeAmountInput.typeText("test")
-        return coffeeAmountInput.exists && coffeeAmountInput.isHittable
-    }
 
+}
+
+
+extension XCUIElement {
+    /// Checking whether the TextField is visible or not
+    func checkInputVisibility() -> Bool {
+        self.tap()
+        self.typeText("test")
+        return self.exists && self.isHittable
+    }
 }
