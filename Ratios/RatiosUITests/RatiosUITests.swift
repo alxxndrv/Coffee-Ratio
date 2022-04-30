@@ -78,4 +78,16 @@ class RatiosUITests: XCTestCase {
 //        }
 //
     }
+    
+    func testInputsVisibility() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let coffeeInput = CoffeeInputView(app: app)
+        let ratioInput = RatioInputView(app: app)
+        
+        // Checking whether the inputs are visible or not
+        XCTAssertTrue(coffeeInput.checkInputVisibility())
+        
+    }
 }
