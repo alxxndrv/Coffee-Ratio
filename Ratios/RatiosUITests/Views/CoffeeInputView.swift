@@ -30,9 +30,19 @@ class CoffeeInputView {
 
 extension XCUIElement {
     /// Checking whether the TextField is visible or not
+    /// (it's required by Apple to be visible)
+    /// https://developer.apple.com/design/human-interface-guidelines/ios/user-interaction/keyboards/#:~:text=use%20the%20keyboard%20layout%20guide%20to%20make%20the%20keyboard%20feel%20like%20an%20integrated%20part%20of%20your%20interface
     func checkInputVisibility() -> Bool {
         self.tap()
         self.typeText("test")
+        return self.isVisible
+    }
+    
+    var isVisible: Bool {
         return self.exists && self.isHittable
+    }
+    
+    func checkKeyboardHideability() {
+        
     }
 }

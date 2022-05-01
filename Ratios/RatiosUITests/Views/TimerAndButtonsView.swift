@@ -24,4 +24,12 @@ class TimerAndButtonsView {
         self.timerView = app.staticTexts.matching(identifier: "timerView").firstMatch
     }
     
+    func startTimer() {
+        self.startButton.tap()
+    }
+    
+    func resetTimer() {
+        self.resetButton.tap()
+    }
+    
 }

@@ -59,7 +59,7 @@ class RatiosUITests: XCTestCase {
         
         let basicWaterAmount = Float(waterAmountText.label)?.rounded() ?? 0
         
-        XCTAssertEqual(basicWaterAmount, 1)
+        XCTAssertEqual(basicWaterAmount, 1, "Wrong amount of water with data equals 1, 1")
         
         /// Stress-testing
         /// Uncomment to test random huge values
@@ -83,12 +83,45 @@ class RatiosUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
+        let timerView = TimerAndButtonsView(app: app)
         let coffeeInput = CoffeeInputView(app: app)
         let ratioInput = RatioInputView(app: app)
         
         // Checking whether the inputs are visible or not
-        XCTAssertTrue(coffeeInput.coffeeAmountInput.checkInputVisibility())
-        XCTAssertTrue(ratioInput.ratioInputView.checkInputVisibility())
+        XCTAssertTrue(coffeeInput.coffeeAmountInput.checkInputVisibility(), "Coffee input isn't visible after pressing on the textfield")
+        XCTAssertTrue(timerView.timerView.isVisible, "Timer view isn't visible while using coffee amount input")
+        XCTAssertTrue(ratioInput.ratioInputView.checkInputVisibility(), "Ratio input isn't visible after pressing on the textfield")
+        XCTAssertTrue(timerView.timerView.isVisible, "Timer view isn't visible while using ration input")
 
+    }
+    
+    func testTimerButtons() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let timerView = TimerAndButtonsView(app: app)
+        timerView.startTimer()
+        sleep(1)
+        // Send app to background
+        XCUIDevice.shared.sendAppToBackground(sleepInterval: 1, app: app)
+        
+        // Asserting that timer goes correctly even in the background
+        XCTAssertEqual(timerView.timerView.label, "00:02", "Wrong timer value: \(timerView.timerView.label) instead of 00:02")
+        
+        timerView.resetTimer()
+        XCTAssertEqual(timerView.timerView.label, "00:00", "Timer isn't resetted even after pressing the button")
+        
+
+        
+    }
+}
+
+
+extension XCUIDevice {
+    func sendAppToBackground(sleepInterval: Int? = nil, app: XCUIApplication? = nil) {
+        self.press(XCUIDevice.Button.home)
+        guard (sleepInterval != nil && app != nil) else { return }
+        sleep(UInt32(sleepInterval!))
+        app!.activate()
     }
 }
