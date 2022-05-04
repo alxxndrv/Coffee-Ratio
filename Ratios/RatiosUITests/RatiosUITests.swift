@@ -91,7 +91,7 @@ class RatiosUITests: XCTestCase {
         XCTAssertTrue(coffeeInput.coffeeAmountInput.checkInputVisibility(), "Coffee input isn't visible after pressing on the textfield")
         XCTAssertTrue(timerView.timerView.isVisible, "Timer view isn't visible while using coffee amount input")
         XCTAssertTrue(ratioInput.ratioInputView.checkInputVisibility(), "Ratio input isn't visible after pressing on the textfield")
-        XCTAssertTrue(timerView.timerView.isVisible, "Timer view isn't visible while using ration input")
+        XCTAssertTrue(timerView.timerView.isVisible, "Timer view isn't visible while using ratio input")
 
     }
     
