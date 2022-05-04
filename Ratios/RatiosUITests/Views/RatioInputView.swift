@@ -21,9 +21,10 @@ class RatioInputView {
     
     
     // TODO: refactor into a protocol or smthng
-    func enterRatio(ratio: Int) {
+    func enterRatio(ratio: Int, hideKeyboard: Bool = true) {
         ratioInputView.tap()
         ratioInputView.typeText(String(ratio))
+        guard hideKeyboard == true else { return }
         app.keyboards.buttons["return"].tap()
     }
 

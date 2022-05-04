@@ -19,9 +19,10 @@ class CoffeeInputView {
         self.coffeeAmountInput = app.textFields.matching(identifier: "coffeeAmountTextField").firstMatch
     }
     
-    func enterCoffeeAmount(amount: Int) {
+    func enterCoffeeAmount(amount: Int, hideKeyboard: Bool = true) {
         coffeeAmountInput.tap()
         coffeeAmountInput.typeText(String(amount))
+        guard hideKeyboard else { return }
         app.keyboards.buttons["return"].tap()
     }
 
