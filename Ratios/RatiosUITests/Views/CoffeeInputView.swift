@@ -47,3 +47,9 @@ extension XCUIElement {
         
     }
 }
+
+extension XCUIApplication {
+    var isCurrentKeyboardNumeric: Bool {
+        return !self.keyboards.buttons["return"].isHittable
+    }
+}
