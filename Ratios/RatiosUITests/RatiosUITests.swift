@@ -95,6 +95,20 @@ class RatiosUITests: XCTestCase {
 
     }
     
+    func testKeyboardTypes() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let coffeeInput = CoffeeInputView(app: app)
+        let ratioInput = RatioInputView(app: app)
+        
+        // Checking whether the inputs are numeric or not
+        coffeeInput.enterCoffeeAmount(amount: 1, hideKeyboard: false)
+        XCTAssertTrue(app.isCurrentKeyboardNumeric, "Non-numeric keyboard assigned to coffee input")
+        ratioInput.enterRatio(ratio: 1, hideKeyboard: false)
+        XCTAssertTrue(app.isCurrentKeyboardNumeric, "Non-numeric keyboard assigned to ratio input")
+    }
+    
     func testTimerButtons() {
         let app = XCUIApplication()
         app.launch()
