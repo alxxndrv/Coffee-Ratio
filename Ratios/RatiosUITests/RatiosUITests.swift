@@ -63,6 +63,7 @@ class RatiosUITests: XCTestCase {
         
         /// Stress-testing
         /// Uncomment to test random huge values
+         
 //        let testValues = (1...10).map({ _ in ((1 * 1_000)...(1 * 1_000_000)).randomElement()! })
 //
 //        for coffeeAmount in testValues {
@@ -79,6 +80,8 @@ class RatiosUITests: XCTestCase {
 //
     }
     
+    /// # Testing inputs visibility
+    /// Due to guidelines, it's important to keep textfields and main views of the app visible even if the keyboard is opened.
     func testInputsVisibility() {
         let app = XCUIApplication()
         app.launch()
@@ -95,6 +98,10 @@ class RatiosUITests: XCTestCase {
 
     }
     
+    
+    /// # Testing keyboard types
+    /// Guidelines says that it's important to show keyboard with appropriate type in specific textfields. In our ratio and coffee amount input the numeric keyboard should be used.
+    /// As far as I know, XCUITest doesn't allow to check the type directly, so we use a little `костыль` (checking whether the keyboard does have `return` button or not) here.
     func testKeyboardTypes() {
         let app = XCUIApplication()
         app.launch()
@@ -109,6 +116,10 @@ class RatiosUITests: XCTestCase {
         XCTAssertTrue(app.isCurrentKeyboardNumeric, "Non-numeric keyboard assigned to ratio input")
     }
     
+    
+    /// # Testing timer buttons
+    /// Checking the normal behaviour of the timer.
+    /// It should start on the tap of a button, continue counting in the background, and then auto-stop & reset on tap of a reset button
     func testTimerButtons() {
         let app = XCUIApplication()
         app.launch()
