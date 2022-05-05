@@ -127,14 +127,15 @@ class RatiosUITests: XCTestCase {
         
     }
     
-    
-    func stressTestCalculations() {
+    /// # Stress-testing the calculations
+    /// Brutforcing the values and checking the results.
+    func testStressfullyCalculations() {
         let app = XCUIApplication()
         app.launch()
         let waterAmountText = app.staticTexts.matching(identifier: "waterAmountText").firstMatch
         let coffeeInput = CoffeeInputView(app: app)
         let ratioInput = RatioInputView(app: app)
-        let testValues = (1...10).map({ _ in ((1 * 1_000)...(1 * 1_000_000)).randomElement()! })
+        let testValues = (1...10).map({ _ in ((1 * 1)...(1 * 1_000)).randomElement()! })
         for coffeeAmount in testValues {
             coffeeInput.enterCoffeeAmount(amount: coffeeAmount)
             let ratio = coffeeAmount / (2...10).randomElement()!
