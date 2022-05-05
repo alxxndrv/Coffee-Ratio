@@ -30,7 +30,7 @@ class RatioInputView {
         }
         ratioInputView.typeText(String(ratio))
         guard hideKeyboard == true else { return }
-        app.keyboards.buttons["return"].tap()
+        app.keyboards.buttons["Return"].tap()
     }
 
 }
