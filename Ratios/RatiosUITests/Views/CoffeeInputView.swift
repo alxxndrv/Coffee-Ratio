@@ -30,7 +30,7 @@ class CoffeeInputView {
         
         coffeeAmountInput.typeText(String(amount))
         guard hideKeyboard else { return }
-        app.keyboards.buttons["return"].tap()
+        app.keyboards.buttons["Return"].tap()
     }
 
 }
