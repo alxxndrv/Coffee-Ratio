@@ -33,7 +33,21 @@ class RatiosUITests: XCTestCase {
         let basicWaterAmount = Float(waterAmountText.label)?.rounded() ?? 0
         
         XCTAssertEqual(basicWaterAmount, 1, "Wrong amount of water with data equals 1, 1")
-                
+        
+        coffeeInput.enterCoffeeAmount(amount: 10)
+        ratioInput.enterRatio(ratio: 10)
+        
+        XCTAssertEqual((Float(waterAmountText.label)?.rounded() ?? 0), 100, "Wrong amount of water with data equals 10, 10")
+    }
+    
+    func testMaxValues() {
+        let app = XCUIApplication()
+        
+        app.launch()
+        
+        let coffeeInput = CoffeeInputView(app: app)
+        let ratioInput = RatioInputView(app: app)
+
         /// Max values test
         coffeeInput.enterCoffeeAmount(amount: 10000, hideKeyboard: false)
         XCTAssertEqual(coffeeInput.coffeeAmountInput.value as? String ?? "", "1000", "App allows to increase coffee value over 1000")
@@ -44,7 +58,13 @@ class RatiosUITests: XCTestCase {
         XCTAssertEqual(coffeeInput.coffeeAmountInput.label, "999", "App allows to increase coffee value over 1000")
         XCTAssertTrue(app.staticTexts["wrongCoffeeAmount"].exists, "Warning of wrong coffee amount doesn't pop up")
         
+        ratioInput.enterRatio(ratio: 500)
+        XCTAssertEqual(coffeeInput.coffeeAmountInput.value as? String ?? "", "50", "App allows to increase ratio over 50")
+        XCTAssertTrue(app.staticTexts["wrongRatio"].exists, "Warning of  wrongRatio doesn't pop up")
         
+        ratioInput.enterRatio(ratio: 999)
+        XCTAssertEqual(coffeeInput.coffeeAmountInput.value as? String ?? "", "9", "App allows to increase ratio over 50")
+        XCTAssertTrue(app.staticTexts["wrongRatio"].exists, "Warning of  wrongRatio doesn't pop up")
     }
     
     /// # Testing inputs visibility
