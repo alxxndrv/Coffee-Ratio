@@ -33,6 +33,17 @@ class RatiosUITests: XCTestCase {
         let basicWaterAmount = Float(waterAmountText.label)?.rounded() ?? 0
         
         XCTAssertEqual(basicWaterAmount, 1, "Wrong amount of water with data equals 1, 1")
+                
+        /// Max values test
+        coffeeInput.enterCoffeeAmount(amount: 10000, hideKeyboard: false)
+        XCTAssertEqual(coffeeInput.coffeeAmountInput.value as? String ?? "", "1000", "App allows to increase coffee value over 1000")
+                
+        XCTAssertTrue(app.staticTexts["wrongCoffeeAmount"].exists, "Warning of wrong coffee amount doesn't pop up")
+        
+        coffeeInput.enterCoffeeAmount(amount: 9999, hideKeyboard: false)
+        XCTAssertEqual(coffeeInput.coffeeAmountInput.label, "999", "App allows to increase coffee value over 1000")
+        XCTAssertTrue(app.staticTexts["wrongCoffeeAmount"].exists, "Warning of wrong coffee amount doesn't pop up")
+        
         
         /// Stress-testing
         /// Uncomment to test random huge values
