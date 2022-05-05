@@ -19,8 +19,15 @@ class CoffeeInputView {
         self.coffeeAmountInput = app.textFields.matching(identifier: "coffeeAmountTextField").firstMatch
     }
     
-    func enterCoffeeAmount(amount: Int, hideKeyboard: Bool = true) {
-        coffeeAmountInput.tap()
+    func enterCoffeeAmount(amount: Int, hideKeyboard: Bool = true, deletePrevious: Bool = true) {
+        
+        if deletePrevious {
+            self.coffeeAmountInput.tap(withNumberOfTaps: 2, numberOfTouches: 1)
+            self.coffeeAmountInput.clearText()
+        } else {
+            self.coffeeAmountInput.tap()
+        }
+        
         coffeeAmountInput.typeText(String(amount))
         guard hideKeyboard else { return }
         app.keyboards.buttons["return"].tap()
@@ -45,6 +52,14 @@ extension XCUIElement {
     
     func checkKeyboardHideability() {
         
+    }
+    
+    func clearText() {
+        guard let stringValue = self.value as? String else {
+            return
+        }
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+        self.typeText(deleteString)
     }
 }
 
