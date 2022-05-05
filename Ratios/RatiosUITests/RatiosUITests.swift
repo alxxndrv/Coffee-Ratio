@@ -16,7 +16,7 @@ class RatiosUITests: XCTestCase {
 
     
     /// # Testing the calculations
-    /// _Well, the stress-testing part isn't use-case at all (1.000.000 coffee cups), but IDK if we should test it
+    /// Just checking up that calculation function is working
     func testCoffeeAmountInput() {
         let app = XCUIApplication()
         
@@ -45,23 +45,6 @@ class RatiosUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["wrongCoffeeAmount"].exists, "Warning of wrong coffee amount doesn't pop up")
         
         
-        /// Stress-testing
-        /// Uncomment to test random huge values
-         
-//        let testValues = (1...10).map({ _ in ((1 * 1_000)...(1 * 1_000_000)).randomElement()! })
-//
-//        for coffeeAmount in testValues {
-//            coffeeInput.enterCoffeeAmount(amount: coffeeAmount)
-//            let ratio = coffeeAmount / (2...10).randomElement()!
-//            ratioInput.enterRatio(ratio: ratio)
-//
-//            let neededValue: UInt64 = UInt64(ratio * coffeeAmount)
-//            let waterAmount = Float(waterAmountText.label)?.rounded() ?? 0
-//
-//            print("Testing with coffee: \(coffeeAmount), ratio: \(ratio) and should get \(neededValue).\nOutput: \(waterAmount)")
-//            XCTAssertEqual(UInt64(waterAmount), neededValue)
-//        }
-//
     }
     
     /// # Testing inputs visibility
@@ -123,6 +106,28 @@ class RatiosUITests: XCTestCase {
 
         
     }
+    
+    
+    func stressTestCalculations() {
+        let app = XCUIApplication()
+        app.launch()
+        let waterAmountText = app.staticTexts.matching(identifier: "waterAmountText").firstMatch
+        let coffeeInput = CoffeeInputView(app: app)
+        let ratioInput = RatioInputView(app: app)
+        let testValues = (1...10).map({ _ in ((1 * 1_000)...(1 * 1_000_000)).randomElement()! })
+        for coffeeAmount in testValues {
+            coffeeInput.enterCoffeeAmount(amount: coffeeAmount)
+            let ratio = coffeeAmount / (2...10).randomElement()!
+            ratioInput.enterRatio(ratio: ratio)
+
+            let neededValue: UInt64 = UInt64(ratio * coffeeAmount)
+            let waterAmount = Float(waterAmountText.label)?.rounded() ?? 0
+
+            print("Testing with coffee: \(coffeeAmount), ratio: \(ratio) and should get \(neededValue).\nOutput: \(waterAmount)")
+            XCTAssertEqual(UInt64(waterAmount), neededValue)
+        }
+    }
+    
 }
 
 
